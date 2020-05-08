@@ -18,8 +18,22 @@ import javax.swing.JLabel;
  */
 public class Sat {
 
-    public void sat(JLabel lblSat) {
+    JLabel lblSat;
+
+    /**
+     *
+     */
+    public Sat() {
+    }
+
+    public Sat(JLabel lblSat) {
+        this.lblSat = lblSat;
+        pokreniSat();
+    }
+
+    private void pokreniSat() {
         Thread sat = new Thread() {
+            @Override
             public void run() {
 
                 while (true) {

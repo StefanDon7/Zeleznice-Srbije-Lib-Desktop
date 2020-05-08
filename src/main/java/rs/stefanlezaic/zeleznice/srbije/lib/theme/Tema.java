@@ -28,6 +28,15 @@ import rs.stefanlezaic.zeleznice.srbije.lib.color.ColorConstant;
  */
 public class Tema {
 
+    Container c;
+
+    public Tema() {
+    }
+
+    public Tema(Container c) {
+        this.c = c;
+    }
+
     public static List<Component> getAllComponents(final Container c) {
         Component[] comps = c.getComponents();
         List<Component> compList = new ArrayList<Component>();
@@ -37,7 +46,6 @@ public class Tema {
                 compList.addAll(getAllComponents((Container) comp));
             }
         }
-
         return compList;
     }
 
@@ -46,7 +54,7 @@ public class Tema {
         component.setForeground(bojaSlova);
     }
 
-    public void blackTheme(Container c) {
+    public void blackTheme() {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
             if (component instanceof JLabel) {
@@ -73,7 +81,7 @@ public class Tema {
         }
     }
 
-    public void whiteTheme(Container c) {
+    public void whiteTheme() {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
             urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
