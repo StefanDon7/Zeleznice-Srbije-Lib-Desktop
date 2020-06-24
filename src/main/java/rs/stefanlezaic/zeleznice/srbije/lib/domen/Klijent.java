@@ -28,6 +28,12 @@ public class Klijent implements GeneralEntity {
     public Klijent(int klijentID) {
         this.klijentID = klijentID;
     }
+    
+     public Klijent(String email,String lozinka) {
+         this.email = email;
+         this.lozinka = lozinka;
+    }
+
 
     public Klijent(int klijentID, String korisnickoIme, String lozinka, String ime, String prezime, String email) {
         this.klijentID = klijentID;
