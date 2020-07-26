@@ -10,26 +10,58 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- *
+ *Klasa Linija predstavlja Liniju jednog putnickog voza. 
+ *Odredjuje je tip linije, pocetna stanica i krajnja stanica.
+ * 
  * @author sleza
  */
 public class Linija implements GeneralEntity {
 
+    /**
+     * 
+     */
     private int linijaID;
+    /**
+     * 
+     */
     private String naziv;
+    /**
+     * 
+     */
     private int minutaza;
+    /**
+     * 
+     */
     private double kilometraza;
+    /**
+     * 
+     */
     private Stanica stanicaPocetna;
+    /**
+     * 
+     */
     private Stanica stanicaKrajnja;
+    /**
+     * 
+     */
     private TipLinije tipLinije;
 
+    /**
+     * 
+     */
     public Linija() {
     }
 
+    /**
+     * 
+     */
     public Linija(int linijaID) {
         this.linijaID = linijaID;
     }
 
+    /**
+     * 
+     */
     public Linija(int LinijaID, String naziv, int minutaza, double kilometraza, Stanica stanicaPocetna, Stanica stanicaKrajnja, TipLinije tipLinije) {
         this.linijaID = LinijaID;
         this.naziv = naziv;
@@ -39,68 +71,100 @@ public class Linija implements GeneralEntity {
         this.stanicaKrajnja = stanicaKrajnja;
         this.tipLinije = tipLinije;
     }
-
+    /**
+     * 
+     */
     public int getLinijaID() {
         return linijaID;
     }
-
+    /**
+     * 
+     */
     public void setLinijaID(int LinijaID) {
         this.linijaID = LinijaID;
     }
-
+    /**
+     * 
+     */
     public String getNaziv() {
         return naziv;
     }
-
+    /**
+     * 
+     */
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
-
+    /**
+     * 
+     */
     public int getMinutaza() {
         return minutaza;
     }
-
+    /**
+     * 
+     */
     public void setMinutaza(int minutaza) {
         this.minutaza = minutaza;
     }
-
+    /**
+     * 
+     */
     public double getKilometraza() {
         return kilometraza;
     }
-
+    /**
+     * 
+     */
     public void setKilometraza(double kilometraza) {
         this.kilometraza = kilometraza;
     }
-
+    /**
+     * 
+     */
     public Stanica getStanicaPocetna() {
         return stanicaPocetna;
     }
-
+    /**
+     * 
+     */
     public void setStanicaPocetna(Stanica stanicaPocetna) {
         this.stanicaPocetna = stanicaPocetna;
     }
-
+    /**
+     * 
+     */
     public Stanica getStanicaKrajnja() {
         return stanicaKrajnja;
     }
-
+    /**
+     * 
+     */
     public void setStanicaKrajnja(Stanica stanicaKrajnja) {
         this.stanicaKrajnja = stanicaKrajnja;
     }
-
+    /**
+     * 
+     */
     public TipLinije getTipLinije() {
         return tipLinije;
     }
-
+    /**
+     * 
+     */
     public void setTipLinije(TipLinije tipLinije) {
         this.tipLinije = tipLinije;
     }
-
+    /**
+     * 
+     */
     @Override
     public String toString() {
         return naziv;
     }
-
+    /**
+     * 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

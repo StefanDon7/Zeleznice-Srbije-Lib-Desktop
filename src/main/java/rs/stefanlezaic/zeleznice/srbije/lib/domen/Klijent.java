@@ -10,31 +10,77 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
+ * Klasa predstavlja Klijenta koji se registruje i prijavljuje radi rezervisanja
+ * karata. Klasa implementira interfejs GeneralEntity.
  *
  * @author sleza
  */
 public class Klijent implements GeneralEntity {
 
+    /**
+     * ID klijenta
+     */
     private int klijentID;
+    /**
+     * Korisnicko ime klijenta
+     */
     private String korisnickoIme;
+    /**
+     * lozinka klijenta
+     */
     private String lozinka;
+    /**
+     * Ime klijenta
+     */
     private String ime;
+    /**
+     * Prezime klijenta
+     */
     private String prezime;
+    /**
+     * Email klijenta
+     */
     private String email;
 
+    /**
+     * Prazan konstruktor klijenta
+     */
     public Klijent() {
     }
 
+    /**
+     * Konstruktor Klijenta
+     *
+     * @param klijentID
+     *
+     */
     public Klijent(int klijentID) {
         this.klijentID = klijentID;
     }
-    
-     public Klijent(String email,String lozinka) {
-         this.email = email;
-         this.lozinka = lozinka;
+
+    /**
+     * Konstruktor Klijenta
+     *
+     * @param email
+     * @param lozinka
+     *
+     */
+    public Klijent(String email, String lozinka) {
+        this.email = email;
+        this.lozinka = lozinka;
     }
 
-
+    /**
+     * Konstruktor Klijenta
+     *
+     * @param klijentID
+     * @param korisnickoIme
+     * @param ime
+     * @param prezime
+     * @param email
+     * @param lozinka
+     *
+     */
     public Klijent(int klijentID, String korisnickoIme, String lozinka, String ime, String prezime, String email) {
         this.klijentID = klijentID;
         this.korisnickoIme = korisnickoIme;
@@ -44,59 +90,122 @@ public class Klijent implements GeneralEntity {
         this.email = email;
     }
 
+    /**
+     * Vraca id klijenta
+     *
+     * @return klijentID
+     */
     public int getKlijentID() {
         return klijentID;
     }
 
+    /**
+     * Postavlja id klijentu
+     *
+     * @param klijentID
+     */
     public void setKlijentID(int klijentID) {
         this.klijentID = klijentID;
     }
 
+    /**
+     * Vraca string korisnicko ime
+     *
+     * @return korisnickoIme
+     */
     public String getKorisnickoIme() {
         return korisnickoIme;
     }
 
+    /**
+     * Postavlja korisnicko ime
+     *
+     * @param korisnickoIme
+     */
     public void setKorisnickoIme(String korisnickoIme) {
         this.korisnickoIme = korisnickoIme;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLozinka() {
         return lozinka;
     }
 
+    /**
+     *
+     * @param lozinka
+     */
     public void setLozinka(String lozinka) {
         this.lozinka = lozinka;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIme() {
         return ime;
     }
 
+    /**
+     *
+     * @param ime
+     */
     public void setIme(String ime) {
         this.ime = ime;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrezime() {
         return prezime;
     }
 
+    /**
+     *
+     * @param prezime
+     */
     public void setPrezime(String prezime) {
         this.prezime = prezime;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return ime + " " + prezime;
     }
 
+    /**
+     * Provera da li su dva objekta ista ako jesu uzima
+     *
+     *
+     * @param obj
+     * @return True ako su objekti isti i false ako nisu.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
