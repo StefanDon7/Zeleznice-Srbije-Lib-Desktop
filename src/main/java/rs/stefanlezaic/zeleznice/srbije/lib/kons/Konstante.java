@@ -26,5 +26,16 @@ public class Konstante {
     public static final int OTKAZI_REZERVACIJU = 13;
     public static final int VRATI_POLASKE_SA_ZA_ODREDJENE_STANICE = 14;
     public static final int VRATI_MEDJUSTANICE_LINIJE = 15;
+    public static final int VRATI_VOZOVE = 16;
+    public static final int IZMENI_POLASKE=17;
+    public static final int OBRISI_POLAZAK=18;
+    public static final int VRATI_LINIJU_NA_OSNOVU_STANICE_I_TIPA=19;
+    public static final int UNESI_STANICU=20;
+    public static final int OBRISI_LINIJU=21;
+    public static final int UNESI_SVE_POLASKE=22;
+    public static final int IZMENI_SVE_MEDJUSTANICE=23;
+    public static final int UNESI_LINIJU=24;
+    public static final int OBRISI_MEDJUSTANICU=25;
+    public static final int UNESI_MEDJUSTANICU=26;
 
 }
