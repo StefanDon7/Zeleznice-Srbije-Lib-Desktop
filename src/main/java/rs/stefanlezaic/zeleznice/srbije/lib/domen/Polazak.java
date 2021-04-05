@@ -205,4 +205,45 @@ public class Polazak implements GeneralEntity {
         return "DatumPolaska LIKE '" + datum + "%'";
     }
 
+    
+    public String getFullQuery() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String datum = sdf.format(this.datumPolaska);
+        return "SELECT * "
+			+ "FROM polazak "
+			+ "WHERE (linijaid IN(SELECT linijaid "
+							  + "FROM Linija "
+							  + "WHERE StanicaIDPolazna=(SELECT stanicaid "
+							  						  + "FROM stanica "
+							  						  + "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"') AND "
+							  		+ "StanicaIDKrajnja=(SELECT stanicaid "
+							  						  + "FROM stanica "
+							  						  + "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')) "
+			+ "OR "
+			+"linijaid IN(SELECT m1.linijaid "
+						+ "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
+						+ "WHERE l.StanicaIDPolazna=(SELECT stanicaid "
+													+ "FROM stanica "
+													+ "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"')"
+						+ "AND m1.stanicaid= (SELECT stanicaid "
+											+ "FROM stanica "
+											+ "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')) "
+			+ "OR "
+			+"linijaid IN(SELECT m1.linijaid "
+						+ "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
+						+ "WHERE l.StanicaIDKrajnja=(SELECT stanicaid "
+													+ "FROM stanica "
+													+ "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')"
+						+ "AND m1.stanicaid= (SELECT stanicaid "
+											+ "FROM stanica "
+											+ "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"')) "
+			+"OR "
+			+ "linijaid IN(SELECT m1.linijaid "
+						+ "FROM medjustanica m1 LEFT JOIN medjustanica m2 ON (m1.linijaid=m2.linijaid) "
+						+ "WHERE m1.stanicaid!=m2.stanicaid AND m1.rednibroj<m2.rednibroj AND "
+						+ "m1.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"') AND "
+						+ "m2.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"'))) AND "
+			+ "datumpolaska LIKE '" +datum+ "%' order by datumPolaska asc";
+    }
+
 }

@@ -35,7 +35,6 @@ public class Sat {
         Thread sat = new Thread() {
             @Override
             public void run() {
-
                 while (true) {
                     Calendar gc = new GregorianCalendar();
                     int godina = gc.get(Calendar.YEAR);
@@ -52,13 +51,7 @@ public class Sat {
                         lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":" + minuti + ":0" + sekunde);
                     } else {
                         lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":" + minuti + ":" + sekunde);
-                    }
-                    try {
-                        sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Sat.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
+                    }   
                 }
             }
         };

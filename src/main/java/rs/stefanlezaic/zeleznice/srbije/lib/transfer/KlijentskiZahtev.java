@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 public class KlijentskiZahtev implements Serializable {
 
-    int operacija;
-    Object parametar;
+    private int operacija;
+    private Object parametar;
 
     public KlijentskiZahtev() {
     }

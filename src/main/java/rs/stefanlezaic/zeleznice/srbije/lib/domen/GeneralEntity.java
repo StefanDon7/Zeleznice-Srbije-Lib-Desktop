@@ -17,7 +17,7 @@ public interface GeneralEntity extends Serializable {
     String getWhereCondition();
 
     String getExtraCondition(Object o);
-
+    
     String getWhereNoPrimaryKey();
 
     String getSort();
