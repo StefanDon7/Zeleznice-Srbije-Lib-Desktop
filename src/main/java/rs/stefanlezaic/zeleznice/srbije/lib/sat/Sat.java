@@ -5,11 +5,8 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.lib.sat;
 
-import static java.lang.Thread.sleep;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**

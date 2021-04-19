@@ -5,11 +5,13 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.lib.theme;
 
+import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import rs.stefanlezaic.zeleznice.srbije.lib.color.ColorConstant;
 
 /**
@@ -85,6 +88,13 @@ public class Tema {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
             urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+        }
+    }
+
+    public void setEnabled(boolean a) {
+        ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
+        for (Component component : compList) {
+            component.setEnabled(a);
         }
     }
 

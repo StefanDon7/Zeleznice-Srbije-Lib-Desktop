@@ -23,12 +23,7 @@ public class Tabela {
     public Tabela() {
     }
 
-    public Tabela(Container c) {
-        this.c = c;
-        ulepsajSveTabele();
-    }
-
-    private void ulepsajTabelu(JTable tabela) {
+    public void ulepsajTabelu(JTable tabela) {
         tabela.setRowHeight(25);
         tabela.setFocusable(false);
         tabela.setShowVerticalLines(false);
@@ -37,15 +32,5 @@ public class Tabela {
         tabela.setRowHeight(25);
     }
 
-    private void ulepsajSveTabele() {
-        ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
-        for (Component component : compList) {
-            if (component instanceof JTable) {
-                JTable tabela = (JTable) component;
-                ulepsajTabelu(tabela);
-            }
-
-        }
-
-    }
+   
 }

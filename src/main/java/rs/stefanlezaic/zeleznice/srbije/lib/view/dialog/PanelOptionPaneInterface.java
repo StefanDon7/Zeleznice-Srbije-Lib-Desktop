@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.lib.view;
+package rs.stefanlezaic.zeleznice.srbije.lib.view.dialog;
 
 /**
  *
- * @author laptop-02
+ * @author Stefan
  */
-public interface GetValue {
-    Object getValue();
+public interface PanelOptionPaneInterface {
+    void setPoruka(String poruka);
 }

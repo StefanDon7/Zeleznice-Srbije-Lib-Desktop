@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JComboBox;
 
-
 /**
  *
  * @author Stefan
@@ -35,13 +34,7 @@ public class DateAndTime {
         cmbGodina.removeAllItems();
         GregorianCalendar gc = new GregorianCalendar();
         int godina = gc.get(Calendar.YEAR);
-        int mesec = gc.get(Calendar.MONTH);
-        int dan = gc.get(Calendar.DAY_OF_MONTH);
         postaviGodine(godina, brojGodina, vreme);
-//        for (int i = godina; i > godina - 100; i--) {
-//            cmbGodina.addItem(i);
-//        }
-//        postaviDaneZaOdredjeniMesecIGodinu(mesec, godina);
 
     }
 
@@ -113,5 +106,15 @@ public class DateAndTime {
                 throw new Exception();
 
         }
+    }
+
+    public void postaviDanasnjiDatum() {
+        GregorianCalendar gc = new GregorianCalendar();
+        int godina = gc.get(Calendar.YEAR);
+        int mesec = gc.get(Calendar.MONTH);
+        int dan = gc.get(Calendar.DAY_OF_MONTH);
+        cmbGodina.setSelectedItem(godina);
+        cmbMeseci.setSelectedIndex(mesec);
+        cmbDani.setSelectedItem(dan);
     }
 }

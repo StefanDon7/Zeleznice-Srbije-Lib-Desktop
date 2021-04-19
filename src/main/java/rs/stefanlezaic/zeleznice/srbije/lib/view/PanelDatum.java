@@ -5,12 +5,16 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.lib.view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.DateAndTime;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
-
 
 /**
  *
@@ -22,9 +26,13 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
      * Creates new form PanelDatum
      */
     DateAndTime dateAndTime;
+    SimpleDateFormat sdf;
+    SimpleDateFormat sdfSaDatumom;
 
     public PanelDatum() {
         initComponents();
+        sdf = new SimpleDateFormat("dd.MM.yyyy");
+        sdfSaDatumom = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
     }
 
@@ -41,7 +49,7 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
         cmbMonths = new javax.swing.JComboBox();
         cmbYears = new javax.swing.JComboBox();
 
-        cmbMonths.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "JANUARY", "FEBRUARY", "MART", "APRIL", "MAY", "JUNE", "JULY", "AVGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" }));
+        cmbMonths.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "JANUAR", "FEBRUAR", "MART", "APRIL", "MAJ", "JUN", "JUL", "AVGUST", "SEPTEMBAR", "OCTOBAR", "NOVEMBAR", "DECEMBAR" }));
         cmbMonths.setToolTipText("");
         cmbMonths.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -63,9 +71,9 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
                 .addContainerGap()
                 .addComponent(cmbDays, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbMonths, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbYears, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbMonths, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbYears, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,24 +106,25 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
     /**
      * Dodaje broj godina koji zelimo da se pojavi u nasem kalendaru.
      *
-     * @param godina
-     * broj godina koji zelimo da se postavi u kalendaru
-     * @param vreme 
-     * Odredjuje da li ce godine biti dodate za buducnost,proslost ili buducnost i proslost i to:
+     * @param godina broj godina koji zelimo da se postavi u kalendaru
+     * @param vreme Odredjuje da li ce godine biti dodate za buducnost,proslost
+     * ili buducnost i proslost i to:
      * <ul>
-     * <li> Unapred - pocece od danasnje godine i dodati jos onoliko godina UNAPRED(Buduce godine) koliko ste stavili.
-     * <li> Unazad - pocece od danasnje godine i dodati jos onoliko godina UNAZAD(Prosle godine) koliko ste stavili.
+     * <li> Unapred - pocece od trenutne godine i dodati jos onoliko godina
+     * UNAPRED(Buduce godine) koliko ste stavili.
+     * <li> Unazad - pocece od trenutne godine i dodati jos onoliko godina
+     * UNAZAD(Prosle godine) koliko ste stavili.
      * <li> UnazadIUnapred-dodace broj godina u buducnost i u proslost.
      * </ul>
-     
+     *
      *
      * @throws Exception
      * <ul>
-     * <li> Greska-Ako unesemo neki drugi ENUM umesto(Unapred,Unazad ili UnapredIlIUnazad)
+     * <li> Greska-Ako unesemo neki drugi ENUM umesto(Unapred,Unazad ili
+     * UnapredIlIUnazad)
      * </ul>
      *
      */
-    
     public void postavi(int godina, Vreme vreme) {
         dateAndTime = new DateAndTime(godina, vreme, cmbDays, cmbMonths, cmbYears);
         try {
@@ -126,13 +135,49 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
     }
 
     @Override
-    public Object getValue() throws Exception {
+    public Object getValue(){
         return cmbDays.getSelectedItem() + "." + (cmbMonths.getSelectedIndex() + 1) + "." + cmbYears.getSelectedItem();
     }
 
-    @Override
-    public String toString() {
-        return "InputDatePanel";
+    public Date getDateWithHoursAndMinutes(String sati, String minuti) {
+        String datum;
+        try {
+            datum = (String) getValue();
+        } catch (Exception ex) {
+            Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        datum = " " + sati + ":" + minuti;
+        try {
+            return sdfSaDatumom.parse(datum);
+        } catch (ParseException ex) {
+            Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
+    public Date getUtilDate() throws Exception {
+        try {
+            Date date = sdf.parse((String) getValue());
+            return date;
+        } catch (Exception ex) {
+            Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new Date();
+    }
+    
+    public int getYear(){
+        return (int) cmbYears.getSelectedItem();
+    }
+    public int getMount(){
+        return cmbMonths.getSelectedIndex()+1;
+    }
+    public int getDay(){
+        return (int) cmbDays.getSelectedItem();
+    }
+
+    public void postaviDanasnjiDatum() {
+        dateAndTime.postaviDanasnjiDatum();
+    }
+
+   
 }
