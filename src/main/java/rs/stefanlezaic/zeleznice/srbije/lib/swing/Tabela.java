@@ -23,7 +23,7 @@ public class Tabela {
     public Tabela() {
     }
 
-    public void ulepsajTabelu(JTable tabela) {
+    public void urediTabelu(JTable tabela) {
         tabela.setRowHeight(25);
         tabela.setFocusable(false);
         tabela.setShowVerticalLines(false);

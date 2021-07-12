@@ -8,59 +8,61 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
- *Klasa Linija predstavlja Liniju jednog putnickog voza. 
- *Odredjuje je tip linije, pocetna stanica i krajnja stanica.
- * 
+ * Klasa Linija predstavlja Liniju jednog putnickog voza. Odredjuje je tip
+ * linije, pocetna stanica i krajnja stanica.
+ *
  * @author sleza
  */
 public class Linija implements GeneralEntity {
 
     /**
-     * 
+     *
      */
     private int linijaID;
     /**
-     * 
+     *
      */
     private String naziv;
     /**
-     * 
+     *
      */
     private int minutaza;
     /**
-     * 
+     *
      */
     private double kilometraza;
     /**
-     * 
+     *
      */
     private Stanica stanicaPocetna;
     /**
-     * 
+     *
      */
     private Stanica stanicaKrajnja;
     /**
-     * 
+     *
      */
     private TipLinije tipLinije;
 
     /**
-     * 
+     *
      */
     public Linija() {
     }
 
     /**
-     * 
+     *
      */
     public Linija(int linijaID) {
         this.linijaID = linijaID;
     }
 
     /**
-     * 
+     *
      */
     public Linija(int LinijaID, String naziv, int minutaza, double kilometraza, Stanica stanicaPocetna, Stanica stanicaKrajnja, TipLinije tipLinije) {
         this.linijaID = LinijaID;
@@ -71,99 +73,133 @@ public class Linija implements GeneralEntity {
         this.stanicaKrajnja = stanicaKrajnja;
         this.tipLinije = tipLinije;
     }
+
     /**
-     * 
+     *
      */
     public int getLinijaID() {
         return linijaID;
     }
+
     /**
-     * 
+     *
      */
     public void setLinijaID(int LinijaID) {
         this.linijaID = LinijaID;
     }
+
     /**
-     * 
+     *
      */
     public String getNaziv() {
         return naziv;
     }
+
     /**
-     * 
+     *
      */
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+         if (naziv.isEmpty() || naziv=="") {
+            throw new ParametarsException("Naziv linije nema vrednost!");
+        }
         this.naziv = naziv;
     }
+
     /**
-     * 
+     *
      */
     public int getMinutaza() {
         return minutaza;
     }
+
     /**
-     * 
+     *
      */
-    public void setMinutaza(int minutaza) {
+    public void setMinutaza(int minutaza) throws ParametarsException {
+        if (minutaza < 0) {
+            throw new ParametarsException("Minutaza ne sme biti manja od 0.");
+        }
         this.minutaza = minutaza;
     }
+
     /**
-     * 
+     *
      */
     public double getKilometraza() {
         return kilometraza;
     }
+
     /**
-     * 
+     *
      */
-    public void setKilometraza(double kilometraza) {
+    public void setKilometraza(double kilometraza) throws ParametarsException {
+        if (kilometraza < 0) {
+            throw new ParametarsException("Minutaza ne sme biti manja od 0.");
+        }
         this.kilometraza = kilometraza;
     }
+
     /**
-     * 
+     *
      */
     public Stanica getStanicaPocetna() {
         return stanicaPocetna;
     }
+
     /**
-     * 
+     *
      */
-    public void setStanicaPocetna(Stanica stanicaPocetna) {
+    public void setStanicaPocetna(Stanica stanicaPocetna) throws ParametarsException {
+        if (stanicaPocetna.equals(null) || !(stanicaPocetna instanceof Stanica)) {
+            throw new ParametarsException("Pogresan parametar pocetna stanica.");
+        }
         this.stanicaPocetna = stanicaPocetna;
     }
+
     /**
-     * 
+     *
      */
     public Stanica getStanicaKrajnja() {
         return stanicaKrajnja;
     }
+
     /**
-     * 
+     *
      */
-    public void setStanicaKrajnja(Stanica stanicaKrajnja) {
+    public void setStanicaKrajnja(Stanica stanicaKrajnja) throws ParametarsException {
+        if (stanicaKrajnja.equals(null) || !(stanicaKrajnja instanceof Stanica)) {
+            throw new ParametarsException("Pogresan parametar krajnja stanica.");
+        }
         this.stanicaKrajnja = stanicaKrajnja;
     }
+
     /**
-     * 
+     *
      */
     public TipLinije getTipLinije() {
         return tipLinije;
     }
+
     /**
-     * 
+     *
      */
-    public void setTipLinije(TipLinije tipLinije) {
+    public void setTipLinije(TipLinije tipLinije) throws ParametarsException {
+        if (tipLinije.equals(null) || !(tipLinije instanceof TipLinije)) {
+            throw new ParametarsException("Pogresan parametar tip linije.");
+        }
         this.tipLinije = tipLinije;
     }
+
     /**
-     * 
+     *
      */
     @Override
     public String toString() {
         return naziv;
     }
+
     /**
-     * 
+     *
      */
     @Override
     public boolean equals(Object obj) {

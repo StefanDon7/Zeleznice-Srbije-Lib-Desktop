@@ -71,7 +71,7 @@ public class Tema {
             } else if (component instanceof JMenu) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.SIVA187, ColorConstant.CRNA0);
             } else if (component instanceof JTable) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA225, ColorConstant.CRNA0);
             } else if (component instanceof JTextField) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
             } else if (component instanceof JScrollPane) {
@@ -87,7 +87,27 @@ public class Tema {
     public void whiteTheme() {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
-            urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+             if (component instanceof JLabel) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JButton) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JPanel) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JComboBox) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JMenu) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JTable) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JTextField) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JScrollPane) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JSpinner) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            } else if (component instanceof JScrollBar) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA0);
+            }
         }
     }
 

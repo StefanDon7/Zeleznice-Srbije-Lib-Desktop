@@ -19,7 +19,7 @@ public interface ColorConstant {
     public static final Color CRNO102 = new Color(102, 102, 102);
     public static final Color SIVA153 = new Color(153, 153, 153);
     public static final Color SIVA187 = new Color(187, 187, 187);
-
+    public static final Color BELA225 = new Color(200, 200, 200);
     public static final Color BELA255 = new Color(255, 255, 255);
 
 }

@@ -14,7 +14,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
  */
 public class Main {
     public static void main(String[] args) {
-        JOptionPaneExample jop=new JOptionPaneExample();
-        jop.createAndDisplayGUI(null, new PanelAttention("Pogresno"));
+//        JOptionPaneExample jop=new JOptionPaneExample();
+//        jop.createAndDisplayGUI(null, new PanelAttention("Pogresno"));
     }
 }

@@ -75,7 +75,6 @@ public class DateAndTime {
                 break;
             default:
                 System.out.println("POGRESAN MESEC!");
-
         }
     }
 

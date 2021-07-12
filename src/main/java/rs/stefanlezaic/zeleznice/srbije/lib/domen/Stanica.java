@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -44,7 +45,12 @@ public class Stanica implements GeneralEntity {
         return naziv;
     }
 
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+        if (naziv.equals("") || naziv.isEmpty()) {
+            throw new ParametarsException("Popunite naziv stanice.");
+        } else if (naziv.length() < 3) {
+            throw new ParametarsException("Naziv stanice se sastoji od najmanje 3 slova.");
+        }
         this.naziv = naziv;
     }
 
@@ -52,7 +58,12 @@ public class Stanica implements GeneralEntity {
         return mesto;
     }
 
-    public void setMesto(Mesto mesto) {
+    public void setMesto(Mesto mesto) throws ParametarsException {
+        if (mesto.equals(null)) {
+            throw new ParametarsException("Odaberite mesto!");
+        } else if (!(mesto instanceof Mesto)) {
+            throw new ParametarsException("Greska!");
+        }
         this.mesto = mesto;
     }
 

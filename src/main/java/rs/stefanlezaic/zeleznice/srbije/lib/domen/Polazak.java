@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -63,7 +64,10 @@ public class Polazak implements GeneralEntity {
         return naziv;
     }
 
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+        if (naziv.isEmpty() || naziv.equals(null)) {
+            throw new ParametarsException("Greska!");
+        }
         this.naziv = naziv;
     }
 
@@ -71,7 +75,10 @@ public class Polazak implements GeneralEntity {
         return linija;
     }
 
-    public void setLinija(Linija linija) {
+    public void setLinija(Linija linija) throws ParametarsException {
+        if (linija == null || !(linija instanceof Linija)) {
+            throw new ParametarsException("Greska!");
+        }
         this.linija = linija;
     }
 
@@ -79,7 +86,10 @@ public class Polazak implements GeneralEntity {
         return voz;
     }
 
-    public void setVoz(Voz voz) {
+    public void setVoz(Voz voz) throws ParametarsException {
+        if (voz == null || !(voz instanceof Voz)) {
+            throw new ParametarsException("Greska!");
+        }
         this.voz = voz;
     }
 
@@ -87,7 +97,10 @@ public class Polazak implements GeneralEntity {
         return datumPolaska;
     }
 
-    public void setDatumPolaska(Date datumPolaska) {
+    public void setDatumPolaska(Date datumPolaska) throws ParametarsException {
+        if (datumPolaska.before(new Date())) {
+            throw new ParametarsException("Datum i vreme polaska je proslo vreme!");
+        }
         this.datumPolaska = datumPolaska;
     }
 
@@ -95,7 +108,10 @@ public class Polazak implements GeneralEntity {
         return datumDolaska;
     }
 
-    public void setDatumDolaska(Date datumDolaska) {
+    public void setDatumDolaska(Date datumDolaska) throws ParametarsException {
+        if (datumDolaska.before(datumPolaska)) {
+            throw new ParametarsException("Datum i vreme dolaska ne sme biti pre datuma i vremena polaska!");
+        }
         this.datumDolaska = datumDolaska;
     }
 
@@ -205,45 +221,44 @@ public class Polazak implements GeneralEntity {
         return "DatumPolaska LIKE '" + datum + "%'";
     }
 
-    
     public String getFullQuery() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String datum = sdf.format(this.datumPolaska);
         return "SELECT * "
-			+ "FROM polazak "
-			+ "WHERE (linijaid IN(SELECT linijaid "
-							  + "FROM Linija "
-							  + "WHERE StanicaIDPolazna=(SELECT stanicaid "
-							  						  + "FROM stanica "
-							  						  + "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"') AND "
-							  		+ "StanicaIDKrajnja=(SELECT stanicaid "
-							  						  + "FROM stanica "
-							  						  + "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')) "
-			+ "OR "
-			+"linijaid IN(SELECT m1.linijaid "
-						+ "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
-						+ "WHERE l.StanicaIDPolazna=(SELECT stanicaid "
-													+ "FROM stanica "
-													+ "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"')"
-						+ "AND m1.stanicaid= (SELECT stanicaid "
-											+ "FROM stanica "
-											+ "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')) "
-			+ "OR "
-			+"linijaid IN(SELECT m1.linijaid "
-						+ "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
-						+ "WHERE l.StanicaIDKrajnja=(SELECT stanicaid "
-													+ "FROM stanica "
-													+ "WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"')"
-						+ "AND m1.stanicaid= (SELECT stanicaid "
-											+ "FROM stanica "
-											+ "WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"')) "
-			+"OR "
-			+ "linijaid IN(SELECT m1.linijaid "
-						+ "FROM medjustanica m1 LEFT JOIN medjustanica m2 ON (m1.linijaid=m2.linijaid) "
-						+ "WHERE m1.stanicaid!=m2.stanicaid AND m1.rednibroj<m2.rednibroj AND "
-						+ "m1.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='"+linija.getStanicaPocetna().getNaziv()+"') AND "
-						+ "m2.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='"+linija.getStanicaKrajnja().getNaziv()+"'))) AND "
-			+ "datumpolaska LIKE '" +datum+ "%' order by datumPolaska asc";
+                + "FROM polazak "
+                + "WHERE (linijaid IN(SELECT linijaid "
+                + "FROM Linija "
+                + "WHERE StanicaIDPolazna=(SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaPocetna().getNaziv() + "') AND "
+                + "StanicaIDKrajnja=(SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaKrajnja().getNaziv() + "')) "
+                + "OR "
+                + "linijaid IN(SELECT m1.linijaid "
+                + "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
+                + "WHERE l.StanicaIDPolazna=(SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaPocetna().getNaziv() + "')"
+                + "AND m1.stanicaid= (SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaKrajnja().getNaziv() + "')) "
+                + "OR "
+                + "linijaid IN(SELECT m1.linijaid "
+                + "FROM medjustanica m1 LEFT JOIN linija l ON (m1.linijaid=l.linijaid) "
+                + "WHERE l.StanicaIDKrajnja=(SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaKrajnja().getNaziv() + "')"
+                + "AND m1.stanicaid= (SELECT stanicaid "
+                + "FROM stanica "
+                + "WHERE nazivstanice='" + linija.getStanicaPocetna().getNaziv() + "')) "
+                + "OR "
+                + "linijaid IN(SELECT m1.linijaid "
+                + "FROM medjustanica m1 LEFT JOIN medjustanica m2 ON (m1.linijaid=m2.linijaid) "
+                + "WHERE m1.stanicaid!=m2.stanicaid AND m1.rednibroj<m2.rednibroj AND "
+                + "m1.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='" + linija.getStanicaPocetna().getNaziv() + "') AND "
+                + "m2.stanicaid=(SELECT stanicaid FROM stanica WHERE nazivstanice='" + linija.getStanicaKrajnja().getNaziv() + "'))) AND "
+                + "datumpolaska LIKE '" + datum + "%' order by datumPolaska asc";
     }
 
 }

@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -32,7 +33,12 @@ public class MedjuStanica implements GeneralEntity {
         return stanica;
     }
 
-    public void setStanica(Stanica stanica) {
+    public void setStanica(Stanica stanica) throws ParametarsException {
+        if (stanica == null) {
+            throw new ParametarsException("Odaberite liniju!");
+        } else if (!(stanica instanceof Stanica)) {
+            throw new ParametarsException("Greska!");
+        }
         this.stanica = stanica;
     }
 
@@ -40,7 +46,12 @@ public class MedjuStanica implements GeneralEntity {
         return linija;
     }
 
-    public void setLinija(Linija linija) {
+    public void setLinija(Linija linija) throws ParametarsException {
+        if (linija == null) {
+            throw new ParametarsException("Odaberite liniju!");
+        } else if (!(linija instanceof Linija)) {
+            throw new ParametarsException("Greska!");
+        }
         this.linija = linija;
     }
 
@@ -48,7 +59,10 @@ public class MedjuStanica implements GeneralEntity {
         return redniBroj;
     }
 
-    public void setRedniBroj(int redniBroj) {
+    public void setRedniBroj(int redniBroj) throws ParametarsException {
+        if (redniBroj < 1) {
+            throw new ParametarsException("Redni broj ne sme biti manji od 1.");
+        }
         this.redniBroj = redniBroj;
     }
 
