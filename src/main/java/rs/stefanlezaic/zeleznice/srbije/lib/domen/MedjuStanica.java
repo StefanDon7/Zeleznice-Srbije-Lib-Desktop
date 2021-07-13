@@ -59,10 +59,7 @@ public class MedjuStanica implements GeneralEntity {
         return redniBroj;
     }
 
-    public void setRedniBroj(int redniBroj) throws ParametarsException {
-        if (redniBroj < 1) {
-            throw new ParametarsException("Redni broj ne sme biti manji od 1.");
-        }
+    public void setRedniBroj(int redniBroj){
         this.redniBroj = redniBroj;
     }
 

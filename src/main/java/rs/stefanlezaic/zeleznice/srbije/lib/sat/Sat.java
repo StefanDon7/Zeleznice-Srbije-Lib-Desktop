@@ -16,19 +16,19 @@ import javax.swing.JLabel;
 public class Sat {
 
     JLabel lblSat;
+    JLabel lblDatum;
 
     /**
      *
      */
-    public Sat() {
-    }
+    
 
-    public Sat(JLabel lblSat) {
+    public Sat(JLabel lblSat, JLabel lblDatum) {
         this.lblSat = lblSat;
-        pokreniSat();
+        this.lblDatum = lblDatum;
     }
 
-    private void pokreniSat() {
+    public void pokreniSat() {
         Thread sat = new Thread() {
             @Override
             public void run() {
@@ -41,14 +41,18 @@ public class Sat {
                     int minuti = gc.get(Calendar.MINUTE);
                     int sati = gc.get(Calendar.HOUR_OF_DAY);
                     if (minuti / 10 == 0 && sekunde / 10 == 0) {
-                        lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":0" + minuti + ":0" + sekunde);
+                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
+                        lblSat.setText("Vreme: " + sati + ":0" + minuti + ":0" + sekunde);
                     } else if (minuti / 10 == 0 && sekunde / 10 != 0) {
-                        lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":0" + minuti + ":" + sekunde);
+                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
+                        lblSat.setText("Vreme: " + sati + ":0" + minuti + ":" + sekunde);
                     } else if (minuti / 10 != 0 && sekunde / 10 == 0) {
-                        lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":" + minuti + ":0" + sekunde);
+                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
+                        lblSat.setText("Vreme: " + sati + ":" + minuti + ":0" + sekunde);
                     } else {
-                        lblSat.setText("Datum: " + dan + "/" + mesec + "/" + godina + "     Vreme: " + sati + ":" + minuti + ":" + sekunde);
-                    }   
+                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
+                        lblSat.setText("Vreme: " + sati + ":" + minuti + ":" + sekunde);
+                    }
                 }
             }
         };
