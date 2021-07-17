@@ -49,6 +49,10 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
         cmbMonths = new javax.swing.JComboBox();
         cmbYears = new javax.swing.JComboBox();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        add(cmbDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 40));
+
         cmbMonths.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "JANUAR", "FEBRUAR", "MART", "APRIL", "MAJ", "JUN", "JUL", "AVGUST", "SEPTEMBAR", "OCTOBAR", "NOVEMBAR", "DECEMBAR" }));
         cmbMonths.setToolTipText("");
         cmbMonths.addItemListener(new java.awt.event.ItemListener() {
@@ -56,36 +60,14 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
                 cmbMonthsItemStateChanged(evt);
             }
         });
+        add(cmbMonths, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 130, 40));
 
         cmbYears.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbYearsItemStateChanged(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbDays, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbMonths, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbYears, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(cmbYears, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbMonthsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMonthsItemStateChanged

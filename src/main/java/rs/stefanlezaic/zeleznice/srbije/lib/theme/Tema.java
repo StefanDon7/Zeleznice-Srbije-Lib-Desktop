@@ -10,7 +10,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import rs.stefanlezaic.zeleznice.srbije.lib.color.ColorConstant;
 
 /**
@@ -69,12 +70,11 @@ public class Tema {
             } else if (component instanceof JComboBox) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
             } else if (component instanceof JMenu) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA187, ColorConstant.SIVA187);
+                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.SIVA187);
             } else if (component instanceof JMenuBar) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.SIVA187);
             }else if (component instanceof JTable) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.BELA225, ColorConstant.CRNA0);
-//                ((JTable) component).setBorder(BorderFactory.createEmptyBorder());
             } else if (component instanceof JTextField) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
             } else if (component instanceof JScrollPane) {
@@ -121,12 +121,5 @@ public class Tema {
             }
         }
     }
-
-    public void setEnabled(boolean a) {
-        ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
-        for (Component component : compList) {
-            component.setEnabled(a);
-        }
-    }
-
+    
 }
