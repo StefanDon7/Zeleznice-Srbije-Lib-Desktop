@@ -137,12 +137,12 @@ public class MedjuStanica implements GeneralEntity {
 
     @Override
     public String getExtraCondition(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
     @Override
     public String getWhereNoPrimaryKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return "";
     }
 
 }

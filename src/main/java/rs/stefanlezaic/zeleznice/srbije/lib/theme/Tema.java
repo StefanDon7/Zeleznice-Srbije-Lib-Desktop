@@ -10,7 +10,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -23,7 +22,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import rs.stefanlezaic.zeleznice.srbije.lib.color.ColorConstant;
 
 /**
@@ -62,29 +60,29 @@ public class Tema {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
             if (component instanceof JLabel) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO60_63_65, ColorConstant.SIVA187);
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.SIVA187);
             } else if (component instanceof JButton) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA0);
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA44);
             } else if (component instanceof JPanel) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNA44, ColorConstant.CRNA0);
+                urediPozadinuISlovaKomponente(component, ColorConstant.CRNA44, ColorConstant.SIVA153);
             } else if (component instanceof JComboBox) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA187, ColorConstant.CRNA44);
             } else if (component instanceof JMenu) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.SIVA187);
-            } else if (component instanceof JMenuBar) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.SIVA187);
-            }else if (component instanceof JTable) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA225, ColorConstant.CRNA0);
-            } else if (component instanceof JTextField) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
-            } else if (component instanceof JScrollPane) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
-            } else if (component instanceof JSpinner) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
-            } else if (component instanceof JScrollBar) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.CRNO102, ColorConstant.CRNA0);
-            } else if (component instanceof JCheckBox) {
                 urediPozadinuISlovaKomponente(component, ColorConstant.CRNA44, ColorConstant.SIVA187);
+            } else if (component instanceof JMenuBar) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.CRNA44, ColorConstant.SIVA187);
+            }else if (component instanceof JTable) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA225, ColorConstant.CRNA44);
+            } else if (component instanceof JTextField) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA44);
+            } else if (component instanceof JScrollPane) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA44);
+            } else if (component instanceof JSpinner) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA44);
+            } else if (component instanceof JScrollBar) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.CRNA44);
+            } else if (component instanceof JCheckBox) {
+                urediPozadinuISlovaKomponente(component, ColorConstant.SIVA153, ColorConstant.SIVA187);
             }
         }
     }
@@ -92,33 +90,34 @@ public class Tema {
     public void whiteTheme() {
         ArrayList<Component> compList = (ArrayList<Component>) getAllComponents(c);
         for (Component component : compList) {
-            if (component instanceof JLabel) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JButton) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JPanel) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JComboBox) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JMenu) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JTable) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JTextField) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JScrollPane) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JSpinner) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JScrollBar) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            } else if (component instanceof JCheckBox) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            }else if (component instanceof JMenu) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            }else if (component instanceof JMenuBar) {
-                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNA44);
-            }
+//            if (component instanceof JLabel) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JButton) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JPanel) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JComboBox) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JMenu) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JTable) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JTextField) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JScrollPane) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JSpinner) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JScrollBar) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            } else if (component instanceof JCheckBox) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            }else if (component instanceof JMenu) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            }else if (component instanceof JMenuBar) {
+//                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
+//            }
+                urediPozadinuISlovaKomponente(component, ColorConstant.BELA255, ColorConstant.CRNO60_63_65);
         }
     }
     

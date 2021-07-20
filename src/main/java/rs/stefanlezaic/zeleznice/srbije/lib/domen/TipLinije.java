@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -33,7 +34,10 @@ public class TipLinije implements GeneralEntity {
         return naziv;
     }
 
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+        if (naziv == null || naziv.isEmpty()) {
+            throw new ParametarsException("Naziv tipa linije je prazno polje ili null!");
+        }
         this.naziv = naziv;
     }
 
@@ -41,7 +45,7 @@ public class TipLinije implements GeneralEntity {
         return tipLinijeID;
     }
 
-    public void setTipLinijeID(int tipLinijeID) {
+    public void setTipLinijeID(int tipLinijeID) throws ParametarsException {
         this.tipLinijeID = tipLinijeID;
     }
 

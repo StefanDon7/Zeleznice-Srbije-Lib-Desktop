@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -43,7 +44,10 @@ public class Voz implements GeneralEntity {
         return naziv;
     }
 
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+        if (naziv == null || naziv.isEmpty()) {
+            throw new ParametarsException("Naziv voza je prazno polje ili null!");
+        }
         this.naziv = naziv;
     }
 
@@ -51,7 +55,10 @@ public class Voz implements GeneralEntity {
         return brojSedista;
     }
 
-    public void setBrojSedista(int brojSedista) {
+    public void setBrojSedista(int brojSedista) throws ParametarsException {
+        if(brojSedista<5){
+            throw new ParametarsException("Broj sedista ne sme biti manji od 5.");
+        }
         this.brojSedista = brojSedista;
     }
 

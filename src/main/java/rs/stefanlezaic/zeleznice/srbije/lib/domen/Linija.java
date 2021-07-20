@@ -8,7 +8,6 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
-import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**

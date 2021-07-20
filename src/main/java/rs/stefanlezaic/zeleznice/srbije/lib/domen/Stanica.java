@@ -46,7 +46,7 @@ public class Stanica implements GeneralEntity {
     }
 
     public void setNaziv(String naziv) throws ParametarsException {
-        if (naziv.equals("") || naziv.isEmpty()) {
+        if (naziv==null || naziv.isEmpty()) {
             throw new ParametarsException("Popunite naziv stanice.");
         } else if (naziv.length() < 3) {
             throw new ParametarsException("Naziv stanice se sastoji od najmanje 3 slova.");

@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -41,7 +42,10 @@ public class Mesto implements GeneralEntity {
         return naziv;
     }
 
-    public void setNaziv(String naziv) {
+    public void setNaziv(String naziv) throws ParametarsException {
+        if(naziv.isEmpty() || naziv==null){
+            throw new ParametarsException("Naziv stanice ne sme biti prazno polje.");
+        }
         this.naziv = naziv;
     }
 
@@ -100,9 +104,8 @@ public class Mesto implements GeneralEntity {
 
     @Override
     public String getWhereNoPrimaryKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
-
     @Override
     public GeneralEntity getNewRecord(ResultSet rs) throws SQLException {
         int id = rs.getInt("MestoID");
@@ -117,7 +120,7 @@ public class Mesto implements GeneralEntity {
 
     @Override
     public String getExtraCondition(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
 }

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Objects;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  *
@@ -33,7 +34,10 @@ public class Rezervacija implements GeneralEntity {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(Date datum) throws ParametarsException {
+        if (datum.after(new Date())) {
+            throw new ParametarsException("Datum rezervacije nije dobar!");
+        }
         this.datum = datum;
     }
 
@@ -41,7 +45,10 @@ public class Rezervacija implements GeneralEntity {
         return klijent;
     }
 
-    public void setKlijent(Klijent klijent) {
+    public void setKlijent(Klijent klijent) throws ParametarsException {
+        if (klijent.getKlijentID() < 1) {
+            throw new ParametarsException("Sifra korisnika mora biti veca od nule!");
+        }
         this.klijent = klijent;
     }
 
@@ -129,12 +136,12 @@ public class Rezervacija implements GeneralEntity {
 
     @Override
     public String getExtraCondition(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
     @Override
     public String getWhereNoPrimaryKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
 }

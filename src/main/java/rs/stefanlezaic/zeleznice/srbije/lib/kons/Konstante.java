@@ -39,5 +39,6 @@ public class Konstante {
     public static final int UNESI_MEDJUSTANICU=26;
     public static final int VRATI_POLASKE_ZA_POCETNU_I_KRAJNJU_STANICU=27;
     public static final int VRATI_POLASKE_ZA_DATUM=28;
+    public static final int VRATI_POLAZAK=29;
 
 }

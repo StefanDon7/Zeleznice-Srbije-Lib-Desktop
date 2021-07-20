@@ -288,7 +288,11 @@ public class Klijent implements GeneralEntity {
 
     @Override
     public String getExtraCondition(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
+    }
+
+    public String getFullQuery(Polazak p) {
+        return "SELECT * FROM klijent WHERE klijentid IN(SELECT klijentID FROM rezervacija WHERE polazakID=" + p.getPolazakID() + ")";
     }
 
 }

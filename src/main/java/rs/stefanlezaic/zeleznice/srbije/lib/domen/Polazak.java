@@ -65,8 +65,8 @@ public class Polazak implements GeneralEntity {
     }
 
     public void setNaziv(String naziv) throws ParametarsException {
-        if (naziv.isEmpty() || naziv.equals(null)) {
-            throw new ParametarsException("Greska!");
+        if (naziv == null || naziv.isEmpty()) {
+            throw new ParametarsException("Naziv ne sme biti prazno string!");
         }
         this.naziv = naziv;
     }
@@ -76,8 +76,8 @@ public class Polazak implements GeneralEntity {
     }
 
     public void setLinija(Linija linija) throws ParametarsException {
-        if (linija == null || !(linija instanceof Linija)) {
-            throw new ParametarsException("Greska!");
+        if (linija == null) {
+            throw new ParametarsException("Atribut linija kod polaska je null vrednost!");
         }
         this.linija = linija;
     }
@@ -87,8 +87,8 @@ public class Polazak implements GeneralEntity {
     }
 
     public void setVoz(Voz voz) throws ParametarsException {
-        if (voz == null || !(voz instanceof Voz)) {
-            throw new ParametarsException("Greska!");
+        if (voz == null) {
+            throw new ParametarsException("Atribut voz kod polaska je null vrednost!");
         }
         this.voz = voz;
     }
@@ -98,8 +98,11 @@ public class Polazak implements GeneralEntity {
     }
 
     public void setDatumPolaska(Date datumPolaska) throws ParametarsException {
+//        if (datumDolaska == null) {
+//            throw new ParametarsException("Datum polaska je null vrednost!");
+//        }
         if (datumPolaska.before(new Date())) {
-            throw new ParametarsException("Datum i vreme polaska je proslo vreme!");
+            throw new ParametarsException("Datum polaska mora biti datum u buducnosti!");
         }
         this.datumPolaska = datumPolaska;
     }
@@ -109,6 +112,9 @@ public class Polazak implements GeneralEntity {
     }
 
     public void setDatumDolaska(Date datumDolaska) throws ParametarsException {
+        if (datumDolaska == null) {
+            throw new ParametarsException("Datum dolaska je null vrednost!");
+        }
         if (datumDolaska.before(datumPolaska)) {
             throw new ParametarsException("Datum i vreme dolaska ne sme biti pre datuma i vremena polaska!");
         }
