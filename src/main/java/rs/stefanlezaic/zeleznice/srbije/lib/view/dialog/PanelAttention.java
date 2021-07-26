@@ -41,7 +41,7 @@ public class PanelAttention extends javax.swing.JPanel implements PanelOptionPan
         jPanel1.setLayout(null);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/bell_1.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/ringbell.gif"))); // NOI18N
         jPanel1.add(jLabel2);
         jLabel2.setBounds(150, 0, 128, 128);
 
