@@ -21,8 +21,6 @@ public class Sat {
     /**
      *
      */
-    
-
     public Sat(JLabel lblSat, JLabel lblDatum) {
         this.lblSat = lblSat;
         this.lblDatum = lblDatum;
@@ -37,22 +35,26 @@ public class Sat {
                     int godina = gc.get(Calendar.YEAR);
                     int mesec = gc.get(Calendar.MONTH) + 1;
                     int dan = gc.get(Calendar.DAY_OF_MONTH);
+
+                    lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
+
                     int sekunde = gc.get(Calendar.SECOND);
                     int minuti = gc.get(Calendar.MINUTE);
                     int sati = gc.get(Calendar.HOUR_OF_DAY);
-                    if (minuti / 10 == 0 && sekunde / 10 == 0) {
-                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
-                        lblSat.setText("Vreme: " + sati + ":0" + minuti + ":0" + sekunde);
-                    } else if (minuti / 10 == 0 && sekunde / 10 != 0) {
-                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
-                        lblSat.setText("Vreme: " + sati + ":0" + minuti + ":" + sekunde);
-                    } else if (minuti / 10 != 0 && sekunde / 10 == 0) {
-                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
-                        lblSat.setText("Vreme: " + sati + ":" + minuti + ":0" + sekunde);
-                    } else {
-                        lblDatum.setText("Datum: " + dan + "/" + mesec + "/" + godina);
-                        lblSat.setText("Vreme: " + sati + ":" + minuti + ":" + sekunde);
+                    String sekundeString = sekunde + "";
+                    String minutiString = minuti + "";
+                    String satiString = sati + "";
+                    if (sekunde / 10 == 0) {
+                        sekundeString = "0" + sekunde;
                     }
+                    if (minuti / 10 == 0) {
+                        minutiString = "0" + minuti;
+                    }
+                    if (sati / 10 == 0) {
+                        satiString = "0" + sati;
+                    }
+                    lblSat.setText("Vreme: " + satiString + ":" + minutiString + ":" + sekundeString);
+
                 }
             }
         };
