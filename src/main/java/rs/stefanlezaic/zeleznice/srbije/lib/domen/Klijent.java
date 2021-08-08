@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.lib.domen;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 
 /**
  * Klasa predstavlja Klijenta koji se registruje i prijavljuje radi rezervisanja
@@ -122,7 +123,10 @@ public class Klijent implements GeneralEntity {
      *
      * @param korisnickoIme
      */
-    public void setKorisnickoIme(String korisnickoIme) {
+    public void setKorisnickoIme(String korisnickoIme) throws ParametarsException {
+        if (korisnickoIme == null || korisnickoIme.isEmpty()) {
+            throw new ParametarsException("Korisnicko ime adresa je null ili prazan string!");
+        }
         this.korisnickoIme = korisnickoIme;
     }
 
@@ -138,7 +142,10 @@ public class Klijent implements GeneralEntity {
      *
      * @param lozinka
      */
-    public void setLozinka(String lozinka) {
+    public void setLozinka(String lozinka) throws ParametarsException {
+        if (lozinka == null || lozinka.isEmpty()) {
+            throw new ParametarsException("Lozinka adresa je null ili prazan string!");
+        }
         this.lozinka = lozinka;
     }
 
@@ -154,7 +161,10 @@ public class Klijent implements GeneralEntity {
      *
      * @param ime
      */
-    public void setIme(String ime) {
+    public void setIme(String ime) throws ParametarsException {
+        if (ime == null || ime.isEmpty()) {
+            throw new ParametarsException("Ime adresa je null ili prazan string!");
+        }
         this.ime = ime;
     }
 
@@ -170,7 +180,10 @@ public class Klijent implements GeneralEntity {
      *
      * @param prezime
      */
-    public void setPrezime(String prezime) {
+    public void setPrezime(String prezime) throws ParametarsException {
+        if (prezime == null || prezime.isEmpty()) {
+            throw new ParametarsException("Prezime adresa je null ili prazan string!");
+        }
         this.prezime = prezime;
     }
 
@@ -186,7 +199,10 @@ public class Klijent implements GeneralEntity {
      *
      * @param email
      */
-    public void setEmail(String email) {
+    public void setEmail(String email) throws ParametarsException {
+        if (email == null || email.isEmpty()) {
+            throw new ParametarsException("Email adresa je null ili prazan string!");
+        }
         this.email = email;
     }
 

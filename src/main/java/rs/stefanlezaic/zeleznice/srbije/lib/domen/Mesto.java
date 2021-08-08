@@ -43,7 +43,7 @@ public class Mesto implements GeneralEntity {
     }
 
     public void setNaziv(String naziv) throws ParametarsException {
-        if(naziv.isEmpty() || naziv==null){
+        if (naziv == null || naziv.isEmpty()) {
             throw new ParametarsException("Naziv stanice ne sme biti prazno polje.");
         }
         this.naziv = naziv;
@@ -106,6 +106,7 @@ public class Mesto implements GeneralEntity {
     public String getWhereNoPrimaryKey() {
         return "";
     }
+
     @Override
     public GeneralEntity getNewRecord(ResultSet rs) throws SQLException {
         int id = rs.getInt("MestoID");
