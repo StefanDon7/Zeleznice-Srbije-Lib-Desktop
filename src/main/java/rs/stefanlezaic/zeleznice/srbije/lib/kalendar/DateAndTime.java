@@ -15,11 +15,11 @@ import javax.swing.JComboBox;
  */
 public class DateAndTime {
 
-    int brojGodina;
-    Vreme vreme;
-    JComboBox cmbDani;
-    JComboBox cmbMeseci;
-    JComboBox cmbGodina;
+    private int brojGodina;
+    private Vreme vreme;
+    private JComboBox cmbDani;
+    private JComboBox cmbMeseci;
+    private JComboBox cmbGodina;
 
     public DateAndTime(int brojGodina, Vreme vreme, JComboBox cmbDani, JComboBox cmbMeseci, JComboBox cmbGodina) {
         this.brojGodina = brojGodina;

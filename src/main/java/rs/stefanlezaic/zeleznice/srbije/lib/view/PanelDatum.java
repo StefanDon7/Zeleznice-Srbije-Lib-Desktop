@@ -7,12 +7,9 @@ package rs.stefanlezaic.zeleznice.srbije.lib.view;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.DateAndTime;
 import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
 
@@ -26,14 +23,11 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
      * Creates new form PanelDatum
      */
     DateAndTime dateAndTime;
-    SimpleDateFormat sdf;
-    SimpleDateFormat sdfSaDatumom;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+    private final SimpleDateFormat sdfSaDatumom = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
     public PanelDatum() {
         initComponents();
-        sdf = new SimpleDateFormat("dd.MM.yyyy");
-        sdfSaDatumom = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-
     }
 
     /**
@@ -117,7 +111,7 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
     }
 
     @Override
-    public Object getValue(){
+    public Object getValue() {
         return cmbDays.getSelectedItem() + "." + (cmbMonths.getSelectedIndex() + 1) + "." + cmbYears.getSelectedItem();
     }
 
@@ -146,14 +140,16 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
         }
         return new Date();
     }
-    
-    public int getYear(){
+
+    public int getYear() {
         return (int) cmbYears.getSelectedItem();
     }
-    public int getMount(){
-        return cmbMonths.getSelectedIndex()+1;
+
+    public int getMount() {
+        return cmbMonths.getSelectedIndex() + 1;
     }
-    public int getDay(){
+
+    public int getDay() {
         return (int) cmbDays.getSelectedItem();
     }
 
@@ -161,5 +157,4 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
         dateAndTime.postaviDanasnjiDatum();
     }
 
-   
 }

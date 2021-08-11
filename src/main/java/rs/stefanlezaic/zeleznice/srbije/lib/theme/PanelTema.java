@@ -5,7 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.lib.theme;
 
-import java.awt.Container;
+import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 /**
@@ -14,28 +14,8 @@ import javax.swing.JLabel;
  */
 public class PanelTema extends javax.swing.JPanel {
 
-    Container container;
-    Tema tema;
-
     public PanelTema() {
         initComponents();
-    }
-
-    public void dodeliContainer(Container container) {
-        this.container = container;
-        tema = new Tema(container);
-    }
-
-    public void ukljuciTamnuTemu() {
-        lblWhiteMode.setVisible(true);
-        lblDarkMode.setVisible(false);
-        tema.blackTheme();
-    }
-
-    public void ukljuciSvetluTemu() {
-        lblWhiteMode.setVisible(false);
-        lblDarkMode.setVisible(true);
-        tema.whiteTheme();
     }
 
     public JLabel getLblDarkMode() {
@@ -45,7 +25,6 @@ public class PanelTema extends javax.swing.JPanel {
     public JLabel getLblWhiteMode() {
         return lblWhiteMode;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,34 +38,25 @@ public class PanelTema extends javax.swing.JPanel {
         lblDarkMode = new javax.swing.JLabel();
         lblWhiteMode = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblDarkMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/darkMode.png"))); // NOI18N
+        lblDarkMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDarkMode.setText("Tamna tema");
+        lblDarkMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        lblDarkMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(lblDarkMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
 
         lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblWhiteMode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/whiteMode.png"))); // NOI18N
+        lblWhiteMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWhiteMode.setText("Svetla tema");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDarkMode, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWhiteMode, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDarkMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblWhiteMode, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblWhiteMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        lblWhiteMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        lblWhiteMode.setMaximumSize(new java.awt.Dimension(176, 64));
+        lblWhiteMode.setMinimumSize(new java.awt.Dimension(176, 64));
+        lblWhiteMode.setName(""); // NOI18N
+        lblWhiteMode.setPreferredSize(new java.awt.Dimension(176, 64));
+        add(lblWhiteMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -94,4 +64,12 @@ public class PanelTema extends javax.swing.JPanel {
     private javax.swing.JLabel lblDarkMode;
     private javax.swing.JLabel lblWhiteMode;
     // End of variables declaration//GEN-END:variables
+
+    public void lblTamnaTemaActionListener(MouseListener mouseListener) {
+        lblDarkMode.addMouseListener(mouseListener);
+    }
+
+    public void lblSvetlaTemaActionListener(MouseListener mouseListener) {
+        lblWhiteMode.addMouseListener(mouseListener);
+    }
 }

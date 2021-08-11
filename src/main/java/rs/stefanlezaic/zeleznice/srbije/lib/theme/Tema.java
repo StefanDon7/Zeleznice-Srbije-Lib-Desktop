@@ -39,6 +39,11 @@ public class Tema {
         this.c = c;
     }
 
+    public void setC(Container c) {
+        this.c = c;
+    }
+    
+
     public static List<Component> getAllComponents(final Container c) {
         Component[] comps = c.getComponents();
         List<Component> compList = new ArrayList<Component>();
