@@ -5,12 +5,9 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.lib.swing;
 
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
-import java.util.ArrayList;
 import javax.swing.JTable;
-import static rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema.getAllComponents;
 
 /**
  *
@@ -18,12 +15,7 @@ import static rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema.getAllComponents;
  */
 public class Tabela {
 
-    Container c;
-
-    public Tabela() {
-    }
-
-    public void urediTabelu(JTable tabela) {
+    public static void urediTabelu(JTable tabela) {
         tabela.setRowHeight(25);
         tabela.setFocusable(false);
         tabela.setShowVerticalLines(false);
@@ -32,5 +24,4 @@ public class Tabela {
         tabela.setRowHeight(25);
     }
 
-   
 }
