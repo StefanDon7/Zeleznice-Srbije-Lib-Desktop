@@ -10,6 +10,7 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -21,6 +22,7 @@ public class SoundEffect {
 
     private final String putanja = "/rs/stefanlezaic/zeleznice/srbije/lib/resources/sound/effect/";
     private URL url;
+    private static float jacina=-30;
 
     public void startAudioKlip(String soundConst) {
         url = getClass().getResource(putanja+soundConst);
@@ -29,10 +31,20 @@ public class SoundEffect {
             audioIn = AudioSystem.getAudioInputStream(url);
             Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
+            FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            volume.setValue(jacina);
             clip.start();
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
             System.out.println("Greska:" + ex);
         }
     }
+    
+    public static void iskljuciZvuk(){
+        jacina=-1000;
+    }
+    public static void ukljuciZvuk(){
+        jacina=-30;
+    }
+    
     
 }
