@@ -22,7 +22,7 @@ public class SoundEffect {
 
     private final String putanja = "/rs/stefanlezaic/zeleznice/srbije/lib/resources/sound/effect/";
     private URL url;
-    private static float jacina=-30;
+    private static float jacina=-20;
 
     public void startAudioKlip(String soundConst) {
         url = getClass().getResource(putanja+soundConst);

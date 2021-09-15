@@ -98,7 +98,7 @@ public class Linija implements GeneralEntity {
      *
      */
     public void setNaziv(String naziv) throws ParametarsException {
-         if (naziv==null || naziv.isEmpty()) {
+        if (naziv == null || naziv.isEmpty()) {
             throw new ParametarsException("Naziv linije nema vrednost!");
         }
         this.naziv = naziv;
