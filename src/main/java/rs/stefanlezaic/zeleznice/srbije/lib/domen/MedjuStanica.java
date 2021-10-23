@@ -16,30 +16,37 @@ import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
  */
 public class MedjuStanica implements GeneralEntity {
 
-    private Stanica stanica;
+    private int medjustanicaID;
     private Linija linija;
+    private Stanica stanica;
     private int redniBroj;
 
     public MedjuStanica() {
     }
 
-    public MedjuStanica(Stanica stanica, Linija linija, int redniBroj) {
-        this.stanica = stanica;
+    public MedjuStanica(Linija linija) {
         this.linija = linija;
+    }
+
+    public MedjuStanica(Linija linija, Stanica stanica, int redniBroj) {
+        this.linija = linija;
+        this.stanica = stanica;
         this.redniBroj = redniBroj;
     }
 
-    public Stanica getStanica() {
-        return stanica;
+    public MedjuStanica(int medjustanicaID, Linija linija, Stanica stanica, int redniBroj) {
+        this.medjustanicaID = medjustanicaID;
+        this.linija = linija;
+        this.stanica = stanica;
+        this.redniBroj = redniBroj;
     }
 
-    public void setStanica(Stanica stanica) throws ParametarsException {
-        if (stanica == null) {
-            throw new ParametarsException("Odaberite liniju!");
-        } else if (!(stanica instanceof Stanica)) {
-            throw new ParametarsException("Greska!");
-        }
-        this.stanica = stanica;
+    public int getMedjustanicaID() {
+        return medjustanicaID;
+    }
+
+    public void setMedjustanicaID(int medjustanicaID) {
+        this.medjustanicaID = medjustanicaID;
     }
 
     public Linija getLinija() {
@@ -55,11 +62,24 @@ public class MedjuStanica implements GeneralEntity {
         this.linija = linija;
     }
 
+    public Stanica getStanica() {
+        return stanica;
+    }
+
+    public void setStanica(Stanica stanica) throws ParametarsException {
+        if (stanica == null) {
+            throw new ParametarsException("Odaberite liniju!");
+        } else if (!(stanica instanceof Stanica)) {
+            throw new ParametarsException("Greska!");
+        }
+        this.stanica = stanica;
+    }
+
     public int getRedniBroj() {
         return redniBroj;
     }
 
-    public void setRedniBroj(int redniBroj){
+    public void setRedniBroj(int redniBroj) {
         this.redniBroj = redniBroj;
     }
 
@@ -124,10 +144,11 @@ public class MedjuStanica implements GeneralEntity {
 
     @Override
     public GeneralEntity getNewRecord(ResultSet rs) throws SQLException {
+        int medjustanicaID = rs.getInt("MedjustanicaID");
         int redniBroj = rs.getInt("RedniBroj");
         int stanicaid = rs.getInt("StanicaID");
         int linijaid = rs.getInt("LinijaID");
-        return new MedjuStanica(new Stanica(stanicaid), new Linija(linijaid), redniBroj);
+        return new MedjuStanica(medjustanicaID, new Linija(linijaid), new Stanica(stanicaid), redniBroj);
     }
 
     @Override
@@ -142,7 +163,7 @@ public class MedjuStanica implements GeneralEntity {
 
     @Override
     public String getWhereNoPrimaryKey() {
-         return "";
+        return "";
     }
 
 }

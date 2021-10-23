@@ -25,7 +25,7 @@ public class Linija implements GeneralEntity {
     /**
      *
      */
-    private String naziv;
+    private String nazivLinije;
     /**
      *
      */
@@ -65,7 +65,7 @@ public class Linija implements GeneralEntity {
      */
     public Linija(int LinijaID, String naziv, int minutaza, double kilometraza, Stanica stanicaPocetna, Stanica stanicaKrajnja, TipLinije tipLinije) {
         this.linijaID = LinijaID;
-        this.naziv = naziv;
+        this.nazivLinije = naziv;
         this.minutaza = minutaza;
         this.kilometraza = kilometraza;
         this.stanicaPocetna = stanicaPocetna;
@@ -90,18 +90,18 @@ public class Linija implements GeneralEntity {
     /**
      *
      */
-    public String getNaziv() {
-        return naziv;
+    public String getNazivLinije() {
+        return nazivLinije;
     }
 
     /**
      *
      */
-    public void setNaziv(String naziv) throws ParametarsException {
-        if (naziv == null || naziv.isEmpty()) {
+    public void setNazivLinije(String nazivLinije) throws ParametarsException {
+        if (nazivLinije == null || nazivLinije.isEmpty()) {
             throw new ParametarsException("Naziv linije nema vrednost!");
         }
-        this.naziv = naziv;
+        this.nazivLinije = nazivLinije;
     }
 
     /**
@@ -194,7 +194,7 @@ public class Linija implements GeneralEntity {
      */
     @Override
     public String toString() {
-        return naziv;
+        return nazivLinije;
     }
 
     /**
@@ -233,7 +233,7 @@ public class Linija implements GeneralEntity {
     public String getAtrValue() {
         StringBuilder sb = new StringBuilder();
         sb.append("").append("default").
-                append(", '").append(naziv).
+                append(", '").append(nazivLinije).
                 append("', '").append(stanicaPocetna.getStanicaID()).
                 append("', '").append(stanicaKrajnja.getStanicaID()).
                 append("', '").append(minutaza).
@@ -246,7 +246,7 @@ public class Linija implements GeneralEntity {
     @Override
     public String setAtrValue() {
         StringBuilder sb = new StringBuilder();
-        sb.append("naziv").append("='").append(naziv).append("',").
+        sb.append("naziv").append("='").append(nazivLinije).append("',").
                 append("stanicaPocetna").append("='").append(stanicaPocetna).append("',").
                 append("stanicaKrajnja").append("='").append(stanicaKrajnja).append("',").
                 append("minutaza").append("='").append(minutaza).append("',").

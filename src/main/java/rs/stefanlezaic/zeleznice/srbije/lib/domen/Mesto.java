@@ -16,7 +16,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 public class Mesto implements GeneralEntity {
 
     private int mestoID;
-    private String naziv;
+    private String nazivMesta;
 
     public Mesto() {
     }
@@ -25,9 +25,9 @@ public class Mesto implements GeneralEntity {
         this.mestoID = mestoID;
     }
 
-    public Mesto(int mestoID, String naziv) {
+    public Mesto(int mestoID, String nazivMesta) {
         this.mestoID = mestoID;
-        this.naziv = naziv;
+        this.nazivMesta = nazivMesta;
     }
 
     public int getMestoID() {
@@ -38,20 +38,20 @@ public class Mesto implements GeneralEntity {
         this.mestoID = mestoID;
     }
 
-    public String getNaziv() {
-        return naziv;
+    public String getNazivMesta() {
+        return nazivMesta;
     }
 
-    public void setNaziv(String naziv) throws ParametarsException {
-        if (naziv == null || naziv.isEmpty()) {
+    public void setNazivMesta(String nazivMesta) throws ParametarsException {
+        if (nazivMesta == null || nazivMesta.isEmpty()) {
             throw new ParametarsException("Naziv stanice ne sme biti prazno polje.");
         }
-        this.naziv = naziv;
+        this.nazivMesta = nazivMesta;
     }
 
     @Override
     public String toString() {
-        return naziv;
+        return nazivMesta;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Mesto implements GeneralEntity {
     public String getAtrValue() {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(mestoID).
-                append("', '").append(naziv).
+                append("', '").append(nazivMesta).
                 append("'");
         return sb.toString();
     }
@@ -93,7 +93,7 @@ public class Mesto implements GeneralEntity {
 
     @Override
     public String getNameByColumn(int i) {
-        String[] atributi = {"MestoID", "Naziv"};
+        String[] atributi = {"MestoID", "NazivMesta"};
         return atributi[i];
     }
 
@@ -110,8 +110,8 @@ public class Mesto implements GeneralEntity {
     @Override
     public GeneralEntity getNewRecord(ResultSet rs) throws SQLException {
         int id = rs.getInt("MestoID");
-        String naziv = rs.getString("NazivMesta");
-        return new Mesto(id, naziv);
+        String nazivMesta = rs.getString("NazivMesta");
+        return new Mesto(id, nazivMesta);
     }
 
     @Override

@@ -23,6 +23,7 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
      * Creates new form PanelDatum
      */
     DateAndTime dateAndTime;
+    private final SimpleDateFormat sdfSQL = new SimpleDateFormat("yyyy-MM-dd");
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
     private final SimpleDateFormat sdfSaDatumom = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
@@ -132,13 +133,33 @@ public class PanelDatum extends javax.swing.JPanel implements GetValue {
     }
 
     public Date getUtilDate() throws Exception {
+        Date date = new Date();
         try {
-            Date date = sdf.parse((String) getValue());
-            return date;
+            date = sdf.parse((String) getValue());
         } catch (Exception ex) {
             Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new Date();
+        return date;
+    }
+
+    public String getSQLDate() throws Exception {
+        String date = new String();
+        try {
+            date = sdfSQL.format(getUtilDate());
+        } catch (Exception ex) {
+            Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return date;
+    }
+
+    public String getSQLDate(Date utilDate) throws Exception {
+        String date = new String();
+        try {
+            date = sdfSQL.format(utilDate);
+        } catch (Exception ex) {
+            Logger.getLogger(PanelDatum.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return date;
     }
 
     public int getYear() {

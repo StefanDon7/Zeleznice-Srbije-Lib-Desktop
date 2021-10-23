@@ -17,28 +17,57 @@ import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
  */
 public class Rezervacija implements GeneralEntity {
 
+    private int rezervacijaID;
     private Klijent klijent;
     private Polazak polazak;
-    private Date datum;
+    private Date date;
 
     public Rezervacija() {
     }
 
-    public Rezervacija(Klijent klijent, Polazak polazak, java.util.Date datum) {
+    public Rezervacija(int rezervacijaID) {
+        this.rezervacijaID = rezervacijaID;
+    }
+
+    public Rezervacija(Polazak polazak) {
+        this.polazak = polazak;
+    }
+
+    public Rezervacija(Klijent klijent, Polazak polazak) {
         this.klijent = klijent;
         this.polazak = polazak;
-        this.datum = datum;
     }
 
-    public Date getDatum() {
-        return datum;
+    public Rezervacija(Klijent klijent, Polazak polazak, Date datum) {
+        this.klijent = klijent;
+        this.polazak = polazak;
+        this.date = datum;
     }
 
-    public void setDatum(Date datum) throws ParametarsException {
-        if (datum.after(new Date())) {
+    public Rezervacija(int rezervacijaID, Klijent klijent, Polazak polazak, Date datum) {
+        this.rezervacijaID = rezervacijaID;
+        this.klijent = klijent;
+        this.polazak = polazak;
+        this.date = datum;
+    }
+
+    public int getRezervacijaID() {
+        return rezervacijaID;
+    }
+
+    public void setRezervacijaID(int rezervacijaID) {
+        this.rezervacijaID = rezervacijaID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) throws ParametarsException {
+        if (date.after(new Date())) {
             throw new ParametarsException("Datum rezervacije nije dobar!");
         }
-        this.datum = datum;
+        this.date = date;
     }
 
     public Klijent getKlijent() {
@@ -62,7 +91,7 @@ public class Rezervacija implements GeneralEntity {
 
     @Override
     public String toString() {
-        return "KLIJENT: " + klijent.getIme() + " " + klijent.getPrezime() + "POLAZAK: " + polazak.getNaziv();
+        return "Rezervacija{" + "rezervacijaID=" + rezervacijaID + ", klijent=" + klijent + ", polazak=" + polazak + ", datum=" + date + '}';
     }
 
     @Override
@@ -96,7 +125,7 @@ public class Rezervacija implements GeneralEntity {
         StringBuilder sb = new StringBuilder();
         sb.append("'").append(klijent.getKlijentID()).
                 append("', '").append(polazak.getPolazakID()).
-                append("', '").append(new java.sql.Date(datum.getTime())).
+                append("', '").append(new java.sql.Date(date.getTime())).
                 append("'");
         return sb.toString();
     }
@@ -106,7 +135,7 @@ public class Rezervacija implements GeneralEntity {
         StringBuilder sb = new StringBuilder();
         sb.append("KlijentID").append("='").append(klijent.getKlijentID()).append("',").
                 append("PolazakID").append("='").append(polazak.getPolazakID()).append("',").
-                append("Date").append("='").append(datum).append("'");
+                append("Date").append("='").append(date).append("'");
         return sb.toString();
     }
 
@@ -123,10 +152,11 @@ public class Rezervacija implements GeneralEntity {
 
     @Override
     public GeneralEntity getNewRecord(ResultSet rs) throws SQLException {
+        int rezervacijaID = rs.getInt("rezervacijaID");
         int klijentID = rs.getInt("KlijentID");
         int polazakID = rs.getInt("PolazakID");
         java.util.Date datum = new java.util.Date(rs.getDate("Date").getTime());
-        return new Rezervacija(new Klijent(klijentID), new Polazak(polazakID), datum);
+        return new Rezervacija(rezervacijaID, new Klijent(klijentID), new Polazak(polazakID), datum);
     }
 
     @Override

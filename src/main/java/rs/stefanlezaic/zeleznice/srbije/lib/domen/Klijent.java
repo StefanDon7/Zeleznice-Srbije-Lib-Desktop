@@ -23,13 +23,13 @@ public class Klijent implements GeneralEntity {
      */
     private int klijentID;
     /**
+     * Email klijenta
+     */
+    private String email;
+    /**
      * Korisnicko ime klijenta
      */
     private String korisnickoIme;
-    /**
-     * lozinka klijenta
-     */
-    private String lozinka;
     /**
      * Ime klijenta
      */
@@ -39,9 +39,9 @@ public class Klijent implements GeneralEntity {
      */
     private String prezime;
     /**
-     * Email klijenta
+     * lozinka klijenta
      */
-    private String email;
+    private String lozinka;
 
     /**
      * Prazan konstruktor klijenta
@@ -82,13 +82,13 @@ public class Klijent implements GeneralEntity {
      * @param lozinka
      *
      */
-    public Klijent(int klijentID, String korisnickoIme, String lozinka, String ime, String prezime, String email) {
+    public Klijent(int klijentID, String email, String korisnickoIme, String ime, String prezime, String lozinka) {
         this.klijentID = klijentID;
+        this.email = email;
         this.korisnickoIme = korisnickoIme;
-        this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
-        this.email = email;
+        this.lozinka = lozinka;
     }
 
     /**
@@ -110,6 +110,25 @@ public class Klijent implements GeneralEntity {
     }
 
     /**
+     *
+     * @return
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     *
+     * @param email
+     */
+    public void setEmail(String email) throws ParametarsException {
+        if (email == null || email.isEmpty()) {
+            throw new ParametarsException("Email adresa je null ili prazan string!");
+        }
+        this.email = email;
+    }
+
+    /**
      * Vraca string korisnicko ime
      *
      * @return korisnickoIme
@@ -128,25 +147,6 @@ public class Klijent implements GeneralEntity {
             throw new ParametarsException("Korisnicko ime adresa je null ili prazan string!");
         }
         this.korisnickoIme = korisnickoIme;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getLozinka() {
-        return lozinka;
-    }
-
-    /**
-     *
-     * @param lozinka
-     */
-    public void setLozinka(String lozinka) throws ParametarsException {
-        if (lozinka == null || lozinka.isEmpty()) {
-            throw new ParametarsException("Lozinka adresa je null ili prazan string!");
-        }
-        this.lozinka = lozinka;
     }
 
     /**
@@ -191,19 +191,19 @@ public class Klijent implements GeneralEntity {
      *
      * @return
      */
-    public String getEmail() {
-        return email;
+    public String getLozinka() {
+        return lozinka;
     }
 
     /**
      *
-     * @param email
+     * @param lozinka
      */
-    public void setEmail(String email) throws ParametarsException {
-        if (email == null || email.isEmpty()) {
-            throw new ParametarsException("Email adresa je null ili prazan string!");
+    public void setLozinka(String lozinka) throws ParametarsException {
+        if (lozinka == null || lozinka.isEmpty()) {
+            throw new ParametarsException("Lozinka adresa je null ili prazan string!");
         }
-        this.email = email;
+        this.lozinka = lozinka;
     }
 
     /**
@@ -293,7 +293,7 @@ public class Klijent implements GeneralEntity {
         String ime = rs.getString("Ime");
         String prezime = rs.getString("Prezime");
         String lozinka = rs.getString("Lozinka");
-        return new Klijent(klijentID, korisnickoIme, lozinka, ime, prezime, email);
+        return new Klijent(klijentID, email, korisnickoIme, ime, prezime, lozinka);
 
     }
 
