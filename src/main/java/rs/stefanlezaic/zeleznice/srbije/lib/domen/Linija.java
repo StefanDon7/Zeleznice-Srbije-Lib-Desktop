@@ -168,7 +168,10 @@ public class Linija implements GeneralEntity {
     public void setStanicaKrajnja(Stanica stanicaKrajnja) throws ParametarsException {
         if (stanicaKrajnja.equals(null) || !(stanicaKrajnja instanceof Stanica)) {
             throw new ParametarsException("Pogresan parametar krajnja stanica.");
+        } else if (stanicaKrajnja.equals(stanicaPocetna)) {
+             throw new ParametarsException("Krajnja stanica ne sme biti ista kao pocetna.");
         }
+
         this.stanicaKrajnja = stanicaKrajnja;
     }
 
