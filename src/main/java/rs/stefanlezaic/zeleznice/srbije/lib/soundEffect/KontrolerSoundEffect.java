@@ -36,18 +36,24 @@ public class KontrolerSoundEffect {
 
             @Override
             public void mousePressed(MouseEvent e) {
+                panelSound.getLblSound().
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOff1.png")));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                panelSound.getLblSound().
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOn.png")));
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
+
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+
             }
 
         });
@@ -60,28 +66,34 @@ public class KontrolerSoundEffect {
 
             @Override
             public void mousePressed(MouseEvent e) {
+                panelSound.getLblSoundOff().
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOn1.png")));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                panelSound.getLblSoundOff().
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOff.png")));
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
+
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+
             }
 
         });
     }
 
     private void postaviPocetneIkoniceITekst() {
-        panelSound.getLblSound().setText("Ukljucen zvuk");
+        panelSound.getLblSound().setText("Zvuk");
         panelSound.getLblSound().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOn.png")));
-        panelSound.getLblSoundOff().setText("Iskljucen zvuk");
+        panelSound.getLblSoundOff().setText("Zvuk");
         panelSound.getLblSoundOff().
                 setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/audioOff.png")));
 

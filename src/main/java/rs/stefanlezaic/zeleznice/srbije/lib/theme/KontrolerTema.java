@@ -43,13 +43,13 @@ public class KontrolerTema {
             public void mousePressed(MouseEvent e) {
                 soundEffect.startAudioKlip(SoundConst.KLIK);
                 panelTema.getLblDarkMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/temaSredina.png")));
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/sunce1.png")));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 panelTema.getLblDarkMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/darkMode.png")));
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/sunce.png")));
             }
 
             @Override
@@ -72,13 +72,13 @@ public class KontrolerTema {
             public void mousePressed(MouseEvent e) {
                 soundEffect.startAudioKlip(SoundConst.KLIK);
                 panelTema.getLblWhiteMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/temaSredina.png")));
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/mesec1.png")));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 panelTema.getLblWhiteMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/whiteMode.png")));
+                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/mesec.png")));
             }
 
             @Override
@@ -108,10 +108,10 @@ public class KontrolerTema {
 
     private void postaviPocetneIkonice() {
         panelTema.getLblDarkMode().
-                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/darkMode.png")));
+                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/sunce.png")));
 
         panelTema.getLblWhiteMode().
-                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/whiteMode.png")));
+                setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/mesec.png")));
     }
 
   

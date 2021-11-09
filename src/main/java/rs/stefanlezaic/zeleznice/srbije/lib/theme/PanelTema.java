@@ -42,14 +42,14 @@ public class PanelTema extends javax.swing.JPanel {
 
         lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDarkMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDarkMode.setText("Tamna tema");
+        lblDarkMode.setText("Svetla tema");
         lblDarkMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
         lblDarkMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         add(lblDarkMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
 
         lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblWhiteMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWhiteMode.setText("Svetla tema");
+        lblWhiteMode.setText("Tamna tema");
         lblWhiteMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
         lblWhiteMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lblWhiteMode.setMaximumSize(new java.awt.Dimension(176, 64));

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
+import rs.stefanlezaic.zeleznice.srbije.lib.validator.EmailValidator;
 
 /**
  * Klasa predstavlja Klijenta koji se registruje i prijavljuje radi rezervisanja
@@ -124,6 +125,8 @@ public class Klijent implements GeneralEntity {
     public void setEmail(String email) throws ParametarsException {
         if (email == null || email.isEmpty()) {
             throw new ParametarsException("Email adresa je null ili prazan string!");
+        } else if (!(EmailValidator.validate(email))) {
+            throw new ParametarsException("Email adresa nije u dobrom formatu!");
         }
         this.email = email;
     }
