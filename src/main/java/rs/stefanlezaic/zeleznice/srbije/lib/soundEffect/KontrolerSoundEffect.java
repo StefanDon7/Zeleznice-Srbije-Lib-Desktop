@@ -26,6 +26,11 @@ public class KontrolerSoundEffect {
         addListener();
     }
 
+    public PanelSound getPanelSound() {
+        return panelSound;
+    }
+    
+
     private void addListener() {
         panelSound.getLblSoundAddMouseListener(new MouseListener() {
             @Override

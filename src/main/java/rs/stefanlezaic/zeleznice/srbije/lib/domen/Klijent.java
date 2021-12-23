@@ -124,7 +124,7 @@ public class Klijent implements GeneralEntity {
      */
     public void setEmail(String email) throws ParametarsException {
         if (email == null || email.isEmpty()) {
-            throw new ParametarsException("Email adresa je null ili prazan string!");
+            throw new ParametarsException("Email adresa je obavezno polje!");
         } else if (!(EmailValidator.validate(email))) {
             throw new ParametarsException("Email adresa nije u dobrom formatu!");
         }
@@ -147,7 +147,7 @@ public class Klijent implements GeneralEntity {
      */
     public void setKorisnickoIme(String korisnickoIme) throws ParametarsException {
         if (korisnickoIme == null || korisnickoIme.isEmpty()) {
-            throw new ParametarsException("Korisnicko ime adresa je null ili prazan string!");
+            throw new ParametarsException("Korisničko ime je obavezno polje!");
         }
         this.korisnickoIme = korisnickoIme;
     }
@@ -166,7 +166,7 @@ public class Klijent implements GeneralEntity {
      */
     public void setIme(String ime) throws ParametarsException {
         if (ime == null || ime.isEmpty()) {
-            throw new ParametarsException("Ime adresa je null ili prazan string!");
+            throw new ParametarsException("Ime je obavezno polje!");
         }
         this.ime = ime;
     }
@@ -185,7 +185,7 @@ public class Klijent implements GeneralEntity {
      */
     public void setPrezime(String prezime) throws ParametarsException {
         if (prezime == null || prezime.isEmpty()) {
-            throw new ParametarsException("Prezime adresa je null ili prazan string!");
+            throw new ParametarsException("Prezime je obavezno polje!");
         }
         this.prezime = prezime;
     }
@@ -204,7 +204,7 @@ public class Klijent implements GeneralEntity {
      */
     public void setLozinka(String lozinka) throws ParametarsException {
         if (lozinka == null || lozinka.isEmpty()) {
-            throw new ParametarsException("Lozinka adresa je null ili prazan string!");
+            throw new ParametarsException("Lozinka je obavezno polje!");
         }
         this.lozinka = lozinka;
     }
