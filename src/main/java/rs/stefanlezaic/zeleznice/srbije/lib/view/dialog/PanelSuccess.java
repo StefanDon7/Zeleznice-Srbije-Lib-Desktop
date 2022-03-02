@@ -42,7 +42,7 @@ public class PanelSuccess extends javax.swing.JPanel implements PanelOptionPaneI
         jPanel1.setLayout(null);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/success.gif"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/lib/resources/icons/success2.gif"))); // NOI18N
         jPanel1.add(jLabel2);
         jLabel2.setBounds(150, 0, 128, 128);
 
